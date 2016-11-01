@@ -34,6 +34,14 @@ var Cupcoffe = function() {
         }
     }
 
+    if (Storages) {
+        this.storages = function(name) {
+            var ns = Storages.initNamespaceStorage(name || 'cupcoffee')
+            this.Local = ns.localStorage
+            this.Session = ns.sessionStorage
+        }
+    }
+
     if ($.RestClient) {
         this.rest = function() {
             return this.global('rest');

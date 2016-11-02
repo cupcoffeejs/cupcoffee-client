@@ -3,6 +3,7 @@ var CupcoffeControllers = function() {
 }
 
 var CupcoffeServices = {},
+    CupcoffeServicesLoaded = {},
     CupcoffeGlobais = {
         cache: {}
     };
@@ -34,14 +35,6 @@ var Cupcoffe = function() {
         }
     }
 
-    if (Storages) {
-        this.storages = function(name) {
-            var ns = Storages.initNamespaceStorage(name || 'cupcoffee')
-            this.Local = ns.localStorage
-            this.Session = ns.sessionStorage
-        }
-    }
-
     if ($.RestClient) {
         this.rest = function() {
             return this.global('rest');
@@ -66,15 +59,16 @@ var Cupcoffe = function() {
 
     this.service = function(name, value) {
         if (!value) {
-            return name ? CupcoffeServices[name] : CupcoffeServices;
+            return name ? CupcoffeServicesLoaded[name] : CupcoffeServicesLoaded;
         } else {
             CupcoffeServices[name] = value;
+            CupcoffeGlobais.services
         }
     }
 
     this.initService = function(name) {
         if (CupcoffeServices[name]) {
-            CupcoffeServices[name] = new CupcoffeServices[name]();
+            CupcoffeServicesLoaded[name] = new CupcoffeServices[name]();
         }
     }
 
@@ -82,8 +76,18 @@ var Cupcoffe = function() {
         var servicesStart = {}
 
         for (var key in CupcoffeServices) {
-            CupcoffeServices[key] = new CupcoffeServices[key]()
+            CupcoffeServicesLoaded[key] = new CupcoffeServices[key]()
         }
+    }
+
+    this.stopService = function(name) {
+        if (CupcoffeServices[name]) {
+            delete CupcoffeServicesLoaded[name];
+        }
+    }
+
+    this.stopAllServices = function(name) {
+        CupcoffeServicesLoaded = {};
     }
 
     this.setController = function(name, controller) {

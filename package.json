@@ -1,8 +1,8 @@
 {
   "name": "cupcoffee-client",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Framework for web clients with dynamic architecture, beautiful and simple",
-  "main": "index.js",
+  "main": "src/cupcoffee.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

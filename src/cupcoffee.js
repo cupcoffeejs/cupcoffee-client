@@ -9,8 +9,13 @@ var CupcoffeServices = {},
     };
 
 var Cupcoffe = function() {
+    this.add = function(name, value) {
+        this[name] = value;
+        return this;
+    }
+
     this.init = function() {
-        if (CupcoffeConfig) {
+        if (typeof CupcoffeConfig != "undefined") {
             if ($.RestClient) {
                 var rest = new $.RestClient(CupcoffeConfig.rest.host, CupcoffeConfig.rest.options || {})
                 if (CupcoffeConfig.rest.config) {
@@ -24,7 +29,7 @@ var Cupcoffe = function() {
         return this;
     }
 
-    if (Vue) {
+    if (typeof Vue != "undefined") {
         this.vue = function(name, options) {
             if (options) {
                 var vue = new Vue(options)

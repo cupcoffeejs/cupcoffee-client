@@ -1,6 +1,6 @@
 {
   "name": "cupcoffee-client",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Framework for web clients with dynamic architecture, beautiful and simple",
   "main": "src/cupcoffee.js",
   "scripts": {

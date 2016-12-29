@@ -9,6 +9,16 @@ var CupcoffeServices = {},
     };
 
 var Cupcoffe = function() {
+
+    this.getConfig = function(item) {
+        if (typeof CupcoffeConfig != "undefined" && CupcoffeConfig[item] != undefined) {
+            return CupcoffeConfig[item]
+        }
+
+        return undefined;
+    }
+
+
     this.add = function(name, value) {
         this[name] = value;
         return this;
@@ -34,7 +44,8 @@ var Cupcoffe = function() {
             if (options) {
                 var vue = new Vue(options)
                 this.global('Vue_' + name, vue);
-            } else {
+            }
+            else {
                 return this.global('Vue_' + name);
             }
         }
@@ -49,7 +60,8 @@ var Cupcoffe = function() {
     this.cache = function(name, value) {
         if (!value) {
             return name ? CupcoffeGlobais['cache'][name] : CupcoffeGlobais['cache'];
-        } else {
+        }
+        else {
             CupcoffeGlobais['cache'][name] = value;
         }
     }
@@ -57,7 +69,8 @@ var Cupcoffe = function() {
     this.global = function(name, value) {
         if (!value) {
             return name ? CupcoffeGlobais[name] : CupcoffeGlobais;
-        } else {
+        }
+        else {
             CupcoffeGlobais[name] = value;
         }
     }
@@ -65,7 +78,8 @@ var Cupcoffe = function() {
     this.service = function(name, value) {
         if (!value) {
             return name ? CupcoffeServicesLoaded[name] : CupcoffeServicesLoaded;
-        } else {
+        }
+        else {
             CupcoffeServices[name] = value;
             CupcoffeGlobais.services
         }
@@ -102,7 +116,8 @@ var Cupcoffe = function() {
     this.global = function(name, value) {
         if (!value) {
             return name ? CupcoffeGlobais[name] : CupcoffeGlobais;
-        } else {
+        }
+        else {
             CupcoffeGlobais[name] = value;
         }
     }
@@ -144,7 +159,8 @@ var Cupcoffe = function() {
 
                     $this.preloader(datas, callback, ++index);
                 })
-            } else if (callback) {
+            }
+            else if (callback) {
                 callback(this.global('finishLoadItens'))
             }
         }

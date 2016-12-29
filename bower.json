@@ -1,0 +1,21 @@
+{
+  "name": "cupcoffee-client",
+  "description": "Framework for web clients with dynamic architecture, beautiful and simple",
+  "main": "src/cupcoffee.js",
+  "authors": [
+    "Philippe Assis <assis@philippeassis.com>"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "cupcoffee",
+    "client"
+  ],
+  "homepage": "https://github.com/cupcoffeejs/cupcoffee-client",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
